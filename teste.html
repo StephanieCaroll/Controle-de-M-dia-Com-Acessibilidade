@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Mídia com Acessibilidade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+        }
+        .container {
+            margin: 20px;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #000;
+        }
+        .controls {
+            margin-top: 10px;
+        }
+        .control-button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+        .control-button:focus {
+            outline: 3px solid #ff0;
+        }
+        .control-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Controle de Mídia com Acessibilidade</h1>
+    </header>
+
+    <div class="container">
+        <video id="mediaPlayer" controls>
+            <source src="tn.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+
+        <div class="controls">
+            <button class="control-button" onclick="playPause()">Tocar/Pausar</button>
+            <button class="control-button" onclick="stop()">Parar</button>
+            <button class="control-button" onclick="increaseVolume()">Aumentar Volume</button>
+            <button class="control-button" onclick="decreaseVolume()">Diminuir Volume</button>
+        </div>
+
+        <button class="control-button" onclick="startVoiceControl()">Ativar Controle por Voz</button>
+    </div>
+
+    <script>
+        // Funções de controle do vídeo
+        const video = document.getElementById('mediaPlayer');
+
+        function playPause() {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+
+        function stop() {
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        function increaseVolume() {
+            if (video.volume < 1) {
+                video.volume += 0.1;
+            }
+        }
+
+        function decreaseVolume() {
+            if (video.volume > 0) {
+                video.volume -= 0.1;
+            }
+        }
+
+        // Controle por voz
+        function startVoiceControl() {
+            const recognition = new webkitSpeechRecognition(); // Use 'SpeechRecognition' em navegadores que não suportam 'webkit'
+            recognition.lang = 'pt-BR';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onresult = (event) => {
+                const command = event.results[0][0].transcript.toLowerCase();
+                console.log('Comando recebido:', command);
+
+                if (command.includes('play') || command.includes('tocar')) {
+                    playPause();
+                } else if (command.includes('pause') || command.includes('pausar')) {
+                    playPause();
+                } else if (command.includes('stop') || command.includes('parar')) {
+                    stop();
+                } else if (command.includes('volume up') || command.includes('aumentar volume')) {
+                    increaseVolume();
+                } else if (command.includes('volume down') || command.includes('diminuir volume')) {
+                    decreaseVolume();
+                }
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Erro de reconhecimento de voz:', event.error);
+            };
+
+            recognition.start();
+        }
+    </script>
+</body>
+</html>
