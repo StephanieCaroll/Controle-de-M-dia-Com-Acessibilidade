@@ -36,7 +36,14 @@ O arquivo de mídia utilizado para testar os controles é o **tn.mp4**. Este arq
 
 1. Clone este repositório para sua máquina local:
    ```bash
-   git clone https://github.com/SeuUsuario/Controle-de-M-dia-Com-Acessibilidade.git
+   git clone https://github.com/StephanieCaroll/Controle-de-M-dia-Com-Acessibilidade.git
+2. Navegue até o diretório do projeto:
+   ```bash
+    cd controle-de-midia-acessivel
+
+3. Abra o arquivo teste.html no seu navegador para testar os controles de mídia.
+
+4. Você poderá ver os botões de controle (Tocar/Pausar, Parar, Aumentar Volume, Diminuir Volume) e a música de teste (tn.mp4) será reproduzida.
 
 ## 🤝 Contribuições
 Sinta-se à vontade para contribuir com este projeto! <br>
@@ -49,3 +56,5 @@ Autor: Stephanie Caroline de OLiveira Macedo  <br>
 E-mail: stephaniecarolinedev@gmail.com <br>
 LinkedIn: linkedin.com/in/stephanie-caroline-97973430b <br>
 GitHub: https://github.com/StephanieCaroll <br>
+
+
