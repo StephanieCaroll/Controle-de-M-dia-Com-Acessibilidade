@@ -36,7 +36,7 @@ O arquivo de mídia utilizado para testar os controles é o **tn.mp4**. Este arq
 
 1. Clone este repositório para sua máquina local:
    ```bash
-   git clone https://github.com/SeuUsuario/controle-de-midia-acessivel.git
+   git clone https://github.com/SeuUsuario/Controle-de-M-dia-Com-Acessibilidade.git
 
 ## 🤝 Contribuições
 Sinta-se à vontade para contribuir com este projeto! <br>
